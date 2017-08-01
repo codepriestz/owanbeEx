@@ -1,8 +1,8 @@
 package com.codepriest.Session;
 
+import com.codepriest.Model.User;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpSession;
 import java.util.concurrent.ConcurrentMap;
 
 /**
@@ -11,17 +11,21 @@ import java.util.concurrent.ConcurrentMap;
 @Component
 
 public class SessionManager {
-    static ConcurrentMap<Integer, HttpSession> manager;
+    static ConcurrentMap<String, User> manager;
 
-    static void Add(Integer key, HttpSession session) {
-        manager.put(key, session);
+    public static void Add(String key, User u) {
+        manager.put(key, u);
     }
 
-    static void remove(Integer key) {
+    public static void remove(String key) {
         manager.remove(key);
     }
 
-    static void update(Integer key, HttpSession session) {
-        manager.replace(key, session);
+    public static void update(String key, User u) {
+        manager.replace(key, u);
+    }
+
+    public static User get(String sessionId) {
+        return manager.get(sessionId);
     }
 }

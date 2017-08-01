@@ -30,6 +30,8 @@ public class EventCentre {
     private User userByManagedById;
     private CentreType centreTypeByCentreType;
     private Collection<EventCentreBookings> eventCentreBookingsById;
+    private int eventCentreStatusId;
+    private EventCentreStatus eventCentreStatusByEventCentreStatusId;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -266,5 +268,25 @@ public class EventCentre {
 
     public void setEventCentreBookingsById(Collection<EventCentreBookings> eventCentreBookingsById) {
         this.eventCentreBookingsById = eventCentreBookingsById;
+    }
+
+    @Basic
+    @Column(name = "event_centre_status_id", nullable = false)
+    public int getEventCentreStatusId() {
+        return eventCentreStatusId;
+    }
+
+    public void setEventCentreStatusId(int eventCentreStatusId) {
+        this.eventCentreStatusId = eventCentreStatusId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "event_centre_status_id", referencedColumnName = "id", nullable = false)
+    public EventCentreStatus getEventCentreStatusByEventCentreStatusId() {
+        return eventCentreStatusByEventCentreStatusId;
+    }
+
+    public void setEventCentreStatusByEventCentreStatusId(EventCentreStatus eventCentreStatusByEventCentreStatusId) {
+        this.eventCentreStatusByEventCentreStatusId = eventCentreStatusByEventCentreStatusId;
     }
 }

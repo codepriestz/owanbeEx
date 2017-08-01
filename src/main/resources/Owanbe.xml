@@ -12,6 +12,12 @@
         <mapping class="com.codepriest.Model.EventCentreBookings"/>
         <mapping class="com.codepriest.Model.UseType"/>
         <mapping class="com.codepriest.Model.User"/>
+        <mapping class="com.codepriest.Model.AttachmentCategory"/>
+        <mapping class="com.codepriest.Model.EventCentreAttachment"/>
+        <mapping class="com.codepriest.Model.EventCentreStatus"/>
+        <mapping class="com.codepriest.Model.Message"/>
+        <mapping class="com.codepriest.Model.MessageType"/>
+        <mapping class="com.codepriest.Model.TransactionStatus"/>
 
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->

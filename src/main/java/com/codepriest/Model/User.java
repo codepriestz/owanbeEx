@@ -1,5 +1,7 @@
 package com.codepriest.Model;
 
+import com.codepriest.utilities.OutputExclude;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -9,10 +11,14 @@ import java.util.Collection;
  */
 @Entity
 public class User {
+    @OutputExclude
     private int id;
     private String email;
+    @OutputExclude
     private String password;
+    @OutputExclude
     private String tempPassword;
+    @OutputExclude
     private String approvalCode;
     private String address;
     private String phoneNumbers;
@@ -21,10 +27,13 @@ public class User {
     private String city;
     private boolean isActive;
     private int userType;
+    @OutputExclude
     private String token;
     private Collection<EventCentre> eventCentresById;
     private Collection<EventCentreBookings> eventCentreBookingsById;
     private UseType useTypeByUserType;
+    private Collection<Message> messagesById;
+    private Collection<Message> messagesById_0;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -222,5 +231,23 @@ public class User {
 
     public void setUseTypeByUserType(UseType useTypeByUserType) {
         this.useTypeByUserType = useTypeByUserType;
+    }
+
+    @OneToMany(mappedBy = "userByFromUserId")
+    public Collection<Message> getMessagesById() {
+        return messagesById;
+    }
+
+    public void setMessagesById(Collection<Message> messagesById) {
+        this.messagesById = messagesById;
+    }
+
+    @OneToMany(mappedBy = "userByToUserId")
+    public Collection<Message> getMessagesById_0() {
+        return messagesById_0;
+    }
+
+    public void setMessagesById_0(Collection<Message> messagesById_0) {
+        this.messagesById_0 = messagesById_0;
     }
 }
